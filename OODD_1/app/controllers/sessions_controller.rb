@@ -32,6 +32,6 @@ end
 
   def destroy
     log_out
-    redirect_to rooms_path
+    redirect_to root_path
   end
 end

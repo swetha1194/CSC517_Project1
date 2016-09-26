@@ -62,11 +62,17 @@ class MembersController < ApplicationController
   # DELETE /members/1
   # DELETE /members/1.json
   def destroy
+    reservations = Reservation.new
+    reservations = Reservation.where("member_id=? and start_time>?", @member.id, Time.now)
+    if reservations.empty?
     @member.destroy
     respond_to do |format|
       format.html { redirect_to members_url, notice: 'Member was successfully destroyed.' }
       format.json { head :no_content }
     end
+    else
+    redirect_to members_url, notice: "Member has pending reservations! Delete them before deleting the member"
+  end
   end
 
   private

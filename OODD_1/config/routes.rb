@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :rooms
   resources :admins
   root "welcome#index"
-  get    'signup'   => 'members#new'
+  get    'signupm'   => 'members#new'
+  get    'signupa'   => 'admins#new'
   get    'login'    => 'sessions#new'
   post   'login'    => 'sessions#create'
   get    'logout'   => 'sessions#destroy'

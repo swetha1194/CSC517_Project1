@@ -1,7 +1,7 @@
 class AdminsController < ApplicationController
   include SessionsHelper
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
-  before_action :checkauth?
+  before_action :checkauth?, only: [:show, :edit, :update, :destroy, :index]
   
   def checkauth?
     unless is_admin?
@@ -26,7 +26,9 @@ class AdminsController < ApplicationController
 
   # GET /admins/new
   def new
+    unless is_admin? or current_user=nil
     @admin = Admin.new
+    end
   end
 
   # GET /admins/1/edit
@@ -36,16 +38,17 @@ class AdminsController < ApplicationController
   # POST /admins
   # POST /admins.json
   def create
+    unless is_admin? or current_user=nil
     @admin = Admin.new(admin_params)
-
     respond_to do |format|
       if @admin.save
-        format.html { redirect_to @admin, notice: 'Admin was successfully created.' }
+        format.html { redirect_to rooms_url, notice: 'Admin was successfully created.' }
         format.json { render :show, status: :created, location: @admin }
       else
         format.html { render :new }
         format.json { render json: @admin.errors, status: :unprocessable_entity }
       end
+    end
     end
   end
 
@@ -71,6 +74,7 @@ class AdminsController < ApplicationController
   # DELETE /admins/1.json
     def destroy
     if @admin.email != "superadmin@admin.com" && @admin.id!=current_user.id
+      @admin.destroy
       respond_to do |format|
         format.html { redirect_to admins_url, notice: 'Admin was successfully destroyed.' }
         format.json { head :no_content }

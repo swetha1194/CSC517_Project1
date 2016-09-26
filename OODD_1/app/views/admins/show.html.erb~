@@ -9,10 +9,8 @@
   <strong>Email:</strong>
   <%= @admin.email %>
 </p>
-
-<p>
-  <strong>Password:</strong>
-  <%= @admin.password %>
-</p>
-
-<%= link_to 'Back', rooms_path %>
+<%if current_user=nil%>
+<%=link_to 'Back', root_path %>
+<%else%>
+<%= link_to 'Back', admins_path %>
+<%end%>
