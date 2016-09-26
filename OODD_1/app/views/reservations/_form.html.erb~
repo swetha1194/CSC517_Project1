@@ -19,7 +19,7 @@
   <%if is_admin?%>
   <div class="field">
     <%= f.label :member_id %>
-    <%= f.date_select :member_id %>
+    <%= f.number_field :member_id %>
   </div>
   <%end%>
   <div class="field">

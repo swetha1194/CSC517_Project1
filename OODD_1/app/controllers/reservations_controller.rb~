@@ -56,7 +56,7 @@ class ReservationsController < ApplicationController
               format.html { redirect_to @reservation, notice: "Success"}
               format.json { render :show, status: :created, location: @reservation }
             else
-              format.html { render :new }
+              format.html { redirect_to rooms_url }
               format.json { render json: @reservation.errors, status: :unprocessable_entity }
               end
             end
@@ -84,7 +84,7 @@ class ReservationsController < ApplicationController
           @reservations = Reservation.where("room_id=? AND date=? AND (start_time, end_time) overlaps (?,?)", @reservation.room_id, @reservation.date, @reservation.start_time, @reservation.end_time)
           if @reservations.empty?
             respond_to do |format|
-            if @reservation.update
+            if @reservation.update(reservation_params)
               format.html { redirect_to @reservation, notice: "Success"}
               format.json { render :show, status: :created, location: @reservation }
             else

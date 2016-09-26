@@ -56,7 +56,7 @@ class ReservationsController < ApplicationController
               format.html { redirect_to @reservation, notice: "Success"}
               format.json { render :show, status: :created, location: @reservation }
             else
-              format.html { render :new }
+              format.html { redirect_to rooms_url }
               format.json { render json: @reservation.errors, status: :unprocessable_entity }
               end
             end
