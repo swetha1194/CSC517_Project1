@@ -36,7 +36,7 @@ class MembersController < ApplicationController
     @member.email.downcase!
     respond_to do |format|
       if @member.save
-        format.html { redirect_to root_path, notice: @member }
+        format.html { redirect_to login_path, notice: @member }
         format.json { render :show, status: :created, location: @member }
       else
         format.html { render :new }
