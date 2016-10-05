@@ -1,15 +1,4 @@
-<%= form_for(admin) do |f| %>
-  <% if admin.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(admin.errors.count, "error") %> prohibited this admin from being saved:</h2>
-
-      <ul>
-      <% admin.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<h2>Create Admin</h2>
 
   <div class="field">
     <%= f.label :name %>
@@ -23,10 +12,10 @@
 
   <div class="field">
     <%= f.label :password %>
-    <%= f.text_field :password %>
+    <%= f.password_field :password %>
   </div>
 
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>
+

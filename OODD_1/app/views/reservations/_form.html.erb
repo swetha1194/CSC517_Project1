@@ -29,12 +29,18 @@
 
   <div class="field">
     <%= f.label :start_time %>
-    <%= f.datetime_select :start_time %>
+    <%= f.datetime_select :start_time, {:minute_step =>30} %>
   </div>
 
   <div class="field">
-    <%= f.label :end_time %>
-    <%= f.datetime_select :end_time %>
+    <%= radio_button_tag(:duration, 30) %>
+    <%= label_tag("30 mins") %>
+    <%= radio_button_tag(:duration, 60) %>
+    <%= label_tag("1 Hour") %>
+    <%= radio_button_tag(:duration, 90) %>
+    <%= label_tag("90 mins") %>
+    <%= radio_button_tag(:duration, 120) %>
+    <%= label_tag("2 Hours") %>
   </div>
 
   <div class="actions">

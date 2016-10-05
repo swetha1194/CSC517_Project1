@@ -43,46 +43,63 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
-    #diff = ((@reservation.end_time-@reservation.start_time)).to_i/3600
-    if (@reservation.date >= Date.current() && @reservation.date - Date.current() <=7 && @reservation.start_time>=Time.now && @reservation.end_time>@reservation.start_time && ((@reservation.end_time-@reservation.start_time)).to_i/3600 <=2 )
-        @reservations = Reservation.new
-        @reservations = Reservation.where("member_id=? AND date=? AND (start_time, end_time) overlaps (?,?)", @reservation.member_id, @reservation.date, @reservation.start_time, @reservation.end_time)  
-        if @reservations.empty?
-          #@reservations = Reservation.new
-          @reservations = Reservation.where("room_id=? AND date=? AND (start_time, end_time) overlaps (?,?)", @reservation.room_id, @reservation.date, @reservation.start_time, @reservation.end_time)
-          if @reservations.empty?
-            respond_to do |format|
+    @reservation.end_time=@reservation.start_time+params[:duration].to_i.minutes
+    #Date Constraints
+    if (@reservation.date < Date.current() || @reservation.date - Date.current() >7)
+       redirect_to rooms_path, notice:'Failed due to date constraints' and return
+    end
+    #Time Constraints
+    if (@reservation.start_time<Time.now)
+       redirect_to rooms_path, notice: 'Failed due to time constraints' and return
+    end
+    #Member Overlap
+    @reservations = Reservation.where("member_id=? AND date=? AND (start_time, end_time) overlaps (?,?)", @reservation.member_id, @reservation.date, @reservation.start_time, @reservation.end_time)
+    if !(is_admin?)
+    if !(@reservations.empty?)
+       redirect_to rooms_path, notice: 'Failed due to member constraint' and return
+    end
+    end
+    #Room Overlap
+    @reservations = Reservation.where("room_id=? AND date=? AND (start_time, end_time) overlaps (?,?)", @reservation.room_id, @reservation.date, @reservation.start_time, @reservation.end_time)
+    if !(@reservations.empty?)
+       redirect_to rooms_path, notice: 'Failed due to room overlap' and return
+    end
+    respond_to do |format|
             if @reservation.save
-              format.html { redirect_to @reservation, notice: "Success"}
+              format.html { redirect_to @reservation, notice: @reservation.end_time}
               format.json { render :show, status: :created, location: @reservation }
             else
               format.html { redirect_to rooms_url }
               format.json { render json: @reservation.errors, status: :unprocessable_entity }
               end
             end
-          else
-            redirect_to rooms_path, notice:'Failed due to overlapping'
-          end
-        else
-          redirect_to rooms_path, notice:'Member cannot book more than one room at the same time'
-      end
-    else
-      redirect_to rooms_path, notice:'Failed due to time constraints'
-    end
   end
 
   # PATCH/PUT /reservations/1
   # PATCH/PUT /reservations/1.json
   def update
     @reservation = Reservation.new(reservation_params)
-    #diff = ((@reservation.end_time-@reservation.start_time)).to_i/3600
-    if (@reservation.date >= Date.current() && @reservation.date - Date.current() <=7 && @reservation.start_time>=Time.now && @reservation.end_time>@reservation.start_time && ((@reservation.end_time-@reservation.start_time)).to_i/3600 <=2 )
-        @reservations = Reservation.new
-        @reservations = Reservation.where("member_id=? AND date=? AND (start_time, end_time) overlaps (?,?)", @reservation.member_id, @reservation.date, @reservation.start_time, @reservation.end_time)  
-        if @reservations.empty?
-          #@reservations = Reservation.new
-          @reservations = Reservation.where("room_id=? AND date=? AND (start_time, end_time) overlaps (?,?)", @reservation.room_id, @reservation.date, @reservation.start_time, @reservation.end_time)
-          if @reservations.empty?
+    @reservation.end_time=@reservation.start_time+params[:duration].to_i.minutes
+    #Date Constraints
+    if (@reservation.date < Date.current() || @reservation.date - Date.current() >7)
+       redirect_to rooms_path, notice:'Failed due to date constraints' and return
+    end
+    #Time Constraints
+    if (@reservation.start_time<Time.now)
+       redirect_to rooms_path, notice: 'Failed due to time constraints' and return
+    end
+    #Member Overlap
+    @reservations = Reservation.where("member_id=? AND date=? AND (start_time, end_time) overlaps (?,?) AND id <> ?", @reservation.member_id, @reservation.date, @reservation.start_time, @reservation.end_time,@reservation.id)
+    if !(is_admin?)
+    if !(@reservations.empty?)
+       redirect_to rooms_path, notice: 'Failed due to member constraint' and return
+    end
+    end
+    #Room Overlap
+    @reservations = Reservation.where("room_id=? AND date=? AND (start_time, end_time) overlaps (?,?) AND id<> ?", @reservation.room_id, @reservation.date, @reservation.start_time, @reservation.end_time,@reservation.id)
+    if !(@reservations.empty?)
+       redirect_to rooms_path, notice: 'Failed due to room overlap' and return
+    end
             respond_to do |format|
             if @reservation.update(reservation_params)
               format.html { redirect_to @reservation, notice: "Success"}
@@ -92,16 +109,7 @@ class ReservationsController < ApplicationController
               format.json { render json: @reservation.errors, status: :unprocessable_entity }
               end
             end
-          else
-            redirect_to rooms_path, notice:'Failed due to overlapping'
-          end
-        else
-          redirect_to rooms_path, notice:'Member cannot book more than one room at the same time'
-      end
-    else
-      redirect_to rooms_path, notice:'Failed due to time constraints'
-    end
-  end
+         end
 
   # DELETE /reservations/1
   # DELETE /reservations/1.json
@@ -119,6 +127,7 @@ class ReservationsController < ApplicationController
   def schedule
     @reservations = Reservation.new
     @reservations = Reservation.where("room_id = ?",params[:id])
+    @reservations.order(date: :desc)
   end
 
   private
@@ -129,6 +138,6 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit(:room_id, :member_id, :date, :start_time, :end_time)
+      params.require(:reservation).permit(:room_id, :member_id, :date, :start_time)
     end
 end
