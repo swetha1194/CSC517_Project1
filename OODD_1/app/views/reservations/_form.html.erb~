@@ -19,7 +19,7 @@
   <%if is_admin?%>
   <div class="field">
     <%= f.label :member_id %>
-    <%= f.collection_select :member_id, Member.order(:name),:id,:name, include_blank: true %>
+    <%= f.collection_select :member_id, Member.order(:name),:id,:name %>
   </div>
   <%end%>
   <div class="field">
@@ -34,11 +34,11 @@
 
   <div class="field">
     <%= radio_button_tag(:duration, 30) %>
-    <%= label_tag("30 mins") %>
+    <%= label_tag("30 mins") %> 
     <%= radio_button_tag(:duration, 60) %>
-    <%= label_tag("1 Hour") %>
+    <%= label_tag("1 Hour") %> 
     <%= radio_button_tag(:duration, 90) %>
-    <%= label_tag("90 mins") %>
+    <%= label_tag("90 mins") %> 
     <%= radio_button_tag(:duration, 120) %>
     <%= label_tag("2 Hours") %>
   </div>
