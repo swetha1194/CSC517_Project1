@@ -20,11 +20,11 @@
         <td><%= room.building %></td>
         <td><%= room.room_size %></td>
         <td><%= reservation.date %></td>
-        <td><%= reservation.start_time %></td>
-        <td><%= reservation.end_time %></td>
+        <td><%= reservation.start_time.strftime("%H:%M") %></td>
+        <td><%= reservation.end_time.strftime("%H:%M") %></td>
         <% if reservation.end_time>Time.now%>
         
-        <td><%= link_to 'Update Reservation', edit_reservation_path(reservation.id) %></td>
+        <td><%= link_to 'Update Reservation', edit_reservation_path(:id=>reservation.id, :room_id:room.id, :member_id=4) %></td>
         <td><%= link_to 'Delete Reservation', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <%end%>
       </tr>

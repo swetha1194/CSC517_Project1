@@ -88,7 +88,7 @@ class ReservationsController < ApplicationController
   # PATCH/PUT /reservations/1
   # PATCH/PUT /reservations/1.json
   def update
-    @reservation = Reservation.new(reservation_params)
+    #@reservation = Reservation.new(reservation_params)
     #Same date constraints
     if @reservation.date!=@reservation.start_time.to_date
        redirect_to rooms_path, notice:'Dates should match' and return
