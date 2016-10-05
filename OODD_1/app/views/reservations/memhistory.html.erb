@@ -20,8 +20,8 @@
         <td><%= room.building %></td>
         <td><%= room.room_size %></td>
         <td><%= reservation.date %></td>
-        <td><%= reservation.start_time %></td>
-        <td><%= reservation.end_time %></td>
+        <td><%= reservation.start_time.strftime("%H:%M") %></td>
+        <td><%= reservation.end_time.strftime("%H:%M") %></td>
         <% if reservation.end_time>Time.now%>
         
         <td><%= link_to 'Update Reservation', edit_reservation_path(reservation.id) %></td>

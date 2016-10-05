@@ -70,6 +70,10 @@ class MembersController < ApplicationController
     reservations = Reservation.new
     reservations = Reservation.where("member_id=? and start_time>?", @member.id, Time.now)
     if reservations.empty?
+    reservations = Reservation.where("member_id=?",@member.id)
+    reservations.each do |reservation|
+      reservation.destroy
+    end
     @member.destroy
     respond_to do |format|
       format.html { redirect_to members_url, notice: 'Member was successfully destroyed.' }

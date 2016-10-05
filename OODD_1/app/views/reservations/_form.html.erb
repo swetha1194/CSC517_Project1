@@ -19,7 +19,7 @@
   <%if is_admin?%>
   <div class="field">
     <%= f.label :member_id %>
-    <%= f.number_field :member_id %>
+    <%= f.collection_select :member_id, Member.order(:name),:id,:name %>
   </div>
   <%end%>
   <div class="field">

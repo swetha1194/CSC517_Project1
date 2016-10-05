@@ -82,6 +82,10 @@ class RoomsController < ApplicationController
     reservations = Reservation.new
     reservations = Reservation.where("room_id=? and start_time>?", @room.id, Time.now)
     if reservations.empty?
+    reservations = Reservation.where("room_id=?",@room.id)
+    reservations.each do |reservation|
+      reservation.destroy
+    end
     @room.destroy
     respond_to do |format|
       format.html { redirect_to rooms_url, notice: 'Room was successfully destroyed.' }

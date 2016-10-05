@@ -42,8 +42,18 @@ class ReservationsController < ApplicationController
   # POST /reservations
   # POST /reservations.json
   def create
+    require 'active_support/core_ext'
     @reservation = Reservation.new(reservation_params)
+    #Same date constraints
+    if @reservation.date!=@reservation.start_time.to_date
+       redirect_to rooms_path, notice:'Dates should match' and return
+    end
+    #duration constraint=>automatically assigned
+    if params[:duration].to_i==0
+    @reservation.end_time=@reservation.start_time+60.minutes
+    else 
     @reservation.end_time=@reservation.start_time+params[:duration].to_i.minutes
+    end
     #Date Constraints
     if (@reservation.date < Date.current() || @reservation.date - Date.current() >7)
        redirect_to rooms_path, notice:'Failed due to date constraints' and return
@@ -79,7 +89,16 @@ class ReservationsController < ApplicationController
   # PATCH/PUT /reservations/1.json
   def update
     @reservation = Reservation.new(reservation_params)
+    #Same date constraints
+    if @reservation.date!=@reservation.start_time.to_date
+       redirect_to rooms_path, notice:'Dates should match' and return
+    end
+    #duration constraint=>automatically assigned
+    if params[:duration].to_i==0
+    @reservation.end_time=@reservation.start_time+60.minutes
+    else 
     @reservation.end_time=@reservation.start_time+params[:duration].to_i.minutes
+    end
     #Date Constraints
     if (@reservation.date < Date.current() || @reservation.date - Date.current() >7)
        redirect_to rooms_path, notice:'Failed due to date constraints' and return
@@ -138,6 +157,6 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit(:room_id, :member_id, :date, :start_time)
+      params.require(:reservation).permit(:member_id, :room_id, :member_id, :date, :start_time)
     end
 end

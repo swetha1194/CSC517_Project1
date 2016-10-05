@@ -29,9 +29,9 @@
         <td><%= member.email %></td>
        <%end%>
         <td><%= reservation.date %></td>
-        <td><%= reservation.start_time %></td>
-        <td><%= reservation.end_time %></td>
-        <% if is_admin && reservation.end_time>Time.now%>
+        <td><%= reservation.start_time.strftime("%H:%M") %></td>
+        <td><%= reservation.end_time.strftime("%H:%M") %></td>
+        <% if is_admin? && reservation.end_time>Time.now%>
         <td><%= link_to 'Delete Reservation', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <%end%>
       </tr>
