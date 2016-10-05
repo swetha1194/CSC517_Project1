@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   post   'book' => 'reservations#create'
   get    'memhistory/:id'  =>  'reservations#memhistory', as: "memhistory"
   get    'schedule/:id'  =>  'reservations#schedule', as: "schedule"
+  get "email" => "reservations#email", as: "email"
+  post "email_friend" => "reservations#email_friend", as: "email_friend"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

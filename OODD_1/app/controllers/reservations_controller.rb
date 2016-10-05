@@ -114,8 +114,20 @@ class ReservationsController < ApplicationController
   end
   def memhistory
     @reservations = Reservation.new
-    @reservations = Reservation.where("member_id = ?",params[:id])
+    @reservations = Reservation.where("member_id = ?",params[:reservation_id])
   end
+
+  def email_friend
+
+    @reservation = Reservation.find(session[:id])
+    params.permit(:emails)
+    list_of_email = params[:emails].gsub(/\s+/, "").split(',')
+    list_of_email.each do |email|
+      UserMailer.invite_email(email, @reservation).deliver_now
+    end
+    flash[:notice]='Emails sent'
+  end
+
   def schedule
     @reservations = Reservation.new
     @reservations = Reservation.where("room_id = ?",params[:id])
