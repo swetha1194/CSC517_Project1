@@ -1,0 +1,10 @@
+<h3>  Email your friends: </h3>
+
+<p>Multiple email addresses should be separated by commas.</p>
+
+<%= form_tag :action => 'email_friend' do %>
+    <%= hidden_field :id, params[:id].to_i%>
+    <p><label for = "Email">Email</label>:
+      <%= text_field_tag 'emails' %></p>
+    <%= submit_tag "Send" %>
+<% end %>

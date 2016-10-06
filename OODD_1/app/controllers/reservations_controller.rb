@@ -141,14 +141,14 @@ class ReservationsController < ApplicationController
   end
   def memhistory
     @reservations = Reservation.new
-    @reservations = Reservation.where("member_id = ?",params[:id])
+    @reservations = Reservation.where("member_id = ?",params[:id]).order('date DESC')
   end
   def schedule
     @reservations = Reservation.new
-    @reservations = Reservation.where("room_id = ?",params[:id])
-    @reservations.order(date: :desc)
+    @reservations = Reservation.where("room_id = ?",params[:id]).order('start_time DESC')
   end
 
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reservation

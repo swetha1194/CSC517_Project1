@@ -88,7 +88,7 @@ class ReservationsController < ApplicationController
   # PATCH/PUT /reservations/1
   # PATCH/PUT /reservations/1.json
   def update
-    @reservation = Reservation.new(reservation_params)
+    #@reservation = Reservation.new(reservation_params)
     #Same date constraints
     if @reservation.date!=@reservation.start_time.to_date
        redirect_to rooms_path, notice:'Dates should match' and return
@@ -141,14 +141,14 @@ class ReservationsController < ApplicationController
   end
   def memhistory
     @reservations = Reservation.new
-    @reservations = Reservation.where("member_id = ?",params[:id])
+    @reservations = Reservation.where("member_id = ?",params[:id]).order('date DESC')
   end
   def schedule
     @reservations = Reservation.new
-    @reservations = Reservation.where("room_id = ?",params[:id])
-    @reservations.order(date: :desc)
+    @reservations = Reservation.where("room_id = ?",params[:id]).order('start_time DESC')
   end
 
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reservation

@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   post   'book' => 'reservations#create'
   get    'memhistory/:id'  =>  'reservations#memhistory', as: "memhistory"
   get    'schedule/:id'  =>  'reservations#schedule', as: "schedule"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+ # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

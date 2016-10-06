@@ -22,11 +22,10 @@
         <td><%= reservation.date %></td>
         <td><%= reservation.start_time.strftime("%H:%M") %></td>
         <td><%= reservation.end_time.strftime("%H:%M") %></td>
-        <% if reservation.end_time>Time.now%>
-        
+        <% if reservation.end_time>Time.now %>
         <td><%= link_to 'Update Reservation', edit_reservation_path(reservation) %></td>
         <td><%= link_to 'Delete Reservation', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <%end%>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
