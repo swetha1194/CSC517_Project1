@@ -34,13 +34,15 @@
 * No overlapping of room reservations
 * Can reserve a room only upto a week in advance
 
-## Pitfalls that needs to be fixed
-* Update reservations
-* Links not properly associated
+##Testing
+* We have tested one model and one controller belonging to rooms
+* The controller is tested for HTML GET and POST requests
+* The model is tested for CRUD operations
 
-## Further work remaining
-* Email notifications
+###Test Cases
+
+
+## Extra Credits Functionality
 * Admin can reserve more than one room for a member at same point of time
-* Intuitive User Interface
 
 
