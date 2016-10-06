@@ -126,6 +126,17 @@
 * Reservations cannot be made more than one week in advance
 * No overlapping of room reservations
 
+##Testing
+* We have tested the rooms controller and rooms model.
+
+###Test Cases
+* Admin can create a room with room details
+* Admin cannot create a room without a room ID
+* Admin can save a room
+* Admin can update a room
+* Admin cannot save a room with duplicate room ID
+* Admin can delete a room
+
 ## Scope for Improvement
 * UI needs to be improved 
 * While booking, there is a necessity to enter date twice
