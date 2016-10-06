@@ -10,7 +10,8 @@
       </ul>
     </div>
   <% end %>
-
+  <%= f.hidden_field :room_id, :value => reservation.room_id%>
+  <%= f.hidden_field :member_id, :value => reservation.member_id%>
   <div class="field">
     <%= f.label :date %>
     <%= f.date_select :date %>

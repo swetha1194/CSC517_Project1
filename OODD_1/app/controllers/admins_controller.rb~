@@ -39,7 +39,7 @@ class AdminsController < ApplicationController
     @admin = Admin.new(admin_params)
     respond_to do |format|
       if @admin.save
-        format.html { redirect_to rooms_url, notice: 'Admin was successfully created.' }
+        format.html { redirect_to admins_url, notice: 'Admin was successfully created.' }
         format.json { render :show, status: :created, location: @admin }
       else
         format.html { render :new }
@@ -51,6 +51,9 @@ class AdminsController < ApplicationController
   # PATCH/PUT /admins/1
   # PATCH/PUT /admins/1.json
   def update
+      if @admin.email=='superadmin@admin.com'
+         redirect_to rooms_url, notice: 'SuperAdmin can never be updated' and return
+      end
       if !(@admin.id==current_user.id)
       redirect_to admins_url, notice: 'Admin can\'t be updated'
       else

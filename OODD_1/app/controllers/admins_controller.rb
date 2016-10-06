@@ -51,6 +51,9 @@ class AdminsController < ApplicationController
   # PATCH/PUT /admins/1
   # PATCH/PUT /admins/1.json
   def update
+      if @admin.email=='superadmin@admin.com'
+         redirect_to rooms_url, notice: 'SuperAdmin can never be updated' and return
+      end
       if !(@admin.id==current_user.id)
       redirect_to admins_url, notice: 'Admin can\'t be updated'
       else
