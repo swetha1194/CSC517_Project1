@@ -1,14 +1,14 @@
 class UserMailer < ApplicationMailer
   default from: 'notifications@library.com'
-  def notification_email(user)
-    @user = user
+  def notification_email(member)
+    @member = member
     @url  = 'https://morning-thicket-62063.herokuapp.com/'
-    mail(to: @user.email, subject: 'Library Room Booking Notification')
+    mail(to: @member.email, subject: 'Library Room Booking Notification')
   end
-  def invite_email(user,reservation)
-    @user = user
+  def invite_email(member,reservation)
+    @member = member
     @reservation = reservation
     @url  = 'https://morning-thicket-62063.herokuapp.com/'
-    mail(to: @user, subject: 'Library Room Booking Notification')
+    mail(to: @member, subject: 'Library Room Booking Notification')
   end
 end
