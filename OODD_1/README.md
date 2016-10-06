@@ -7,72 +7,71 @@
 
 ## Admin Functionality
 #### Admins: 
-##### Create new admins
+**Create new admins**
 * Click on View Admins link 
 * In the resulting page you can see a list of all admins
 * At the bottom of the page there is a link to create new admin
 * Enter appropriate details and create the new admin
-#### Destroy admins
+**Destroy admins**
 * Click on View Admins link 
 * In the resulting page you can see a list of all admins
 * Next to each of the admin there is a destory link
 * Click on that to delete tthe admin
-* Remember that the admin currently logged in and superadmin cannot be deleted
-#### View Other Admin Details
+**View Other Admin Details**
 * Click on View Admins link 
 * In the resulting page you can see a list of all admins
 * Next to each of the admin there is a View link
 * Click on that to view admin details
-#### View Self Details
+**View Self Details**
 * Click on View Profile link at the top of the page
 * The resulting page displays the admin details
-#### Update Profile
+**Update Profile**
 * Click on Update Profile link at the top of the page
 * The admin can edit his profile details
 * An admin can edit only his/her profile details
 * A super admin cannot update his profile (We don't want people changing superadmin credentials)
 
 ### Members:
-#### Create new members
+**Create new members**
 * Click on View Members link 
 * In the resulting page you can see a list of all members
 * At the bottom of the page there is a link to create new member
 * Enter appropriate details and create the new member
-#### Destroy members
+**Destroy members**
 * Click on View Members link 
 * In the resulting page you can see a list of all members
 * Next to each of the member there is a destory link
 * Click on that to delete tthe admin
 * Remember that any member who has any pending reservations cannot be deleted unless all the pending reservations are deleted
-#### View Other Member Details
+**View Other Member Details**
 * Click on View Members link 
 * In the resulting page you can see a list of all members
 * Next to each of the memberthere is a View link
 * Click on that to view member details
 
 ### Rooms
-#### View and Search for Rooms
+**View and Search for Rooms**
 * The page that is diplayed right after login dislays the list of rooms 
 * The search bar above can be used to filter out rooms based on either building or room size
 * There is a Show link next to the room list and clicking on it displays the room details
-#### Create new Rooms
+**Create new Rooms**
 * The page that is diplayed right after login dislays the list of rooms 
 * Below the list of rooms is the option to create a new room
 * The admin can enter the room number, building and size 
 * Room Number+Building is a unique entity 
 * Example: There can be a room number 1 in both Hunt and Hill but there cannot be 2 similar room numbers in one building
-#### Destroy Rooms
+**Destroy Rooms**
 * The page that is diplayed right after login dislays the list of rooms
 * Next to each of the room there is a link to delete it
 * Clicking on the link deletes the room
 * Remember that any member who has any pending reservations cannot be deleted unless all the pending reservations are deleted
-#### Update Room Details
+**Update Room Details**
 * The page that is diplayed right after login dislays the list of rooms
 * Next to each of the room there is a link to update the corresponding room
 * Clicking on the link displays form to update the room
 
-### Reservation
-#### Book a room for a member
+## Reservation
+**Book a room for a member**
 * The page that is diplayed right after login dislays the list of rooms
 * Next to each of the room there is a link to book the corresponding room
 * In the resulting page choose the member for whom you wish to reserve from the dropdown list of member names
@@ -80,41 +79,41 @@
 * The date portion in the start time should match the date field 
 * Choose an appropriate radio button to reserve the room for either 30, 60, 90 or 120 minutes
 * Click on Create Reservation button (See reservation constraints)
-#### View Member History, Update and Delete Reservations
+**View Member History, Update and Delete Reservations**
 * Click on View Members link
 * For every member displayed there is corresponding Reservation History Link
 * Clicking on that link displays all the reservations made by the member sorted by date and time
 * For pending room reservations, the reservation can be viewed, deleted and updated
 * Clicking on the appropriate link performs the necessary function
-#### View Room Schedule
+**View Room Schedule**
 * The page that is diplayed right after login dislays the list of rooms
 * Next to each of the room there is a link to view the schedule for the corresponding room
 * Clicking on the link displays all the possible reservations for the room along with member details
 
 
 ## Member Functionality
-#### View Self Details
+**View Self Details**
 * Click on View Profile link at the top of the page
 * The resulting page displays the member details
-#### Update Profile
+**Update Profile**
 * Click on Update Profile link at the top of the page
 * The member can edit his profile details
-#### View and Search for Rooms
+**View and Search for Rooms**
 * The page that is diplayed right after login dislays the list of rooms 
 * The search bar above can be used to filter out rooms based on either building or room size
 * There is a Show link next to the room list and clicking on it displays the room details
-#### Reserve a Room
+**Reserve a Room**
 * The page that is diplayed right after login dislays the list of rooms
 * Next to each of the room there is a link to book the corresponding room
 * Select the date and start time
 * The date portion in the start time should match the date field 
 * Choose an appropriate radio button to reserve the room for either 30, 60, 90 or 120 minutes
 * Click on Create Reservation button (See reservation constraints)
-#### View Room Schedule
+**View Room Schedule**
 * The page that is diplayed right after login dislays the list of rooms
 * Next to each of the room there is a link to view the schedule for the corresponding room
 * Clicking on the link displays all the possible reservations for the room sorted according to date and time
-#### View Reservation History, Update and Delete Reservations
+**View Reservation History, Update and Delete Reservations**
 * Click on Reservation History link
 * The resulting displays all the reservations made by the member sorted by date and time
 * For pending room reservations, the reservation can be viewed, deleted and updated
