@@ -2,7 +2,7 @@
 ## Getting Started
 * Go the deployed website
 * In homepage create super admin by clickin on Admin Sign up option
-* Super admin Details: email: superadmin@admin.com 
+* Super admin Details: username: superadmin@admin.com, password: admin123 
 * Login with super admin details
 * After creating the super admin you can create many admins and members by choosing the appropriate option
 
