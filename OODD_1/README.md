@@ -40,7 +40,12 @@
 * The model is tested for CRUD operations
 
 ###Test Cases
-
+* Any admin should be able to create a room
+* Admin should not be permitted to create a room without room ID
+* Admin should be able to save a new room to the database
+* Admin should be able to update a room
+* Admin cannot create rooms with duplicate room IDs
+* Admin should be able to delete a room
 
 ## Extra Credits Functionality
 * Admin can reserve more than one room for a member at same point of time
