@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: 'notifications@library.com'
+  default from: 'notifications@libraryroom7.com'
   def notification_email(member)
     @member = member
     @url  = 'https://morning-thicket-62063.herokuapp.com/'
