@@ -140,7 +140,7 @@
 ## Scope for Improvement
 * UI needs to be improved 
 * While booking, there is a necessity to enter date twice
-* The user session is saved for 10 minutes after which the user automatically logs out. This is done because the session is saved if the user forgets to logout before on closing the browser and the current user can access the the previous user's account. To prevent this we explicitly made the session last for 10 minutes. 
+* The user session is saved for 10 minutes after which the user automatically logs out. This is done because the user session is saved if he/she forgets to logout before closing the browser and the another user can access the the previous user's account. To prevent this we explicitly made the session last for 10 minutes. 
 
 ## Further work remaining
 * Email reservation details
