@@ -49,7 +49,7 @@
  * Next to each of the memberthere is a View link
  * Click on that to view member details
 
-### Rooms
+### Rooms:
 1. **View and Search for Rooms**
  * The page that is diplayed right after login dislays the list of rooms 
  * The search bar above can be used to filter out rooms based on either building or room size
@@ -70,7 +70,7 @@
  * Next to each of the room there is a link to update the corresponding room
  * Clicking on the link displays form to update the room
 
-## Reservation
+### Reservations
 1. **Book a room for a member**
  * The page that is diplayed right after login dislays the list of rooms
  * Next to each of the room there is a link to book the corresponding room
