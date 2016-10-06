@@ -8,10 +8,10 @@
 ## Admin Functionality
 #### Admins: 
 1. **Create new admins**
-* Click on View Admins link 
-* In the resulting page you can see a list of all admins
-* At the bottom of the page there is a link to create new admin
-* Enter appropriate details and create the new admin
+  * Click on View Admins link 
+  * In the resulting page you can see a list of all admins
+  * At the bottom of the page there is a link to create new admin
+  * Enter appropriate details and create the new admin
 2. **Destroy admins**
 * Click on View Admins link 
 * In the resulting page you can see a list of all admins
