@@ -89,8 +89,7 @@
  * The page that is diplayed right after login dislays the list of rooms
  * Next to each of the room there is a link to view the schedule for the corresponding room
  * Clicking on the link displays all the possible reservations for the room along with member details
-
-
+  #### Important Note: In the room schedule and member history page all the reservations will be displayed, example reservations made a week ago will be displayed, but only pending reservations can be modified or deleted. 
 ## Member Functionality
 1. **View Self Details**
  * Click on View Profile link at the top of the page
