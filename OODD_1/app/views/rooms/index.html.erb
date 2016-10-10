@@ -1,7 +1,7 @@
 <!-- search -->
 <%= form_tag rooms_path, :method => 'get' do %>
-<h1>Library Room Reservation System</h1>
-<table>
+<!--<h1>Library Room Reservation System</h1>-->
+<table class="table">
 <thead>
 <tr>
 <th><%= link_to 'Home',rooms_path%></th>
@@ -20,7 +20,7 @@
 </thead>
 </table>
  <div class="form-group">
-<table>
+<table class="table">
 <tr>
 <td>    <label for="search">Enter keyword here</label></td>
 <td>    <%= text_field_tag :search, params[:search] ,class: "search"%></td>
@@ -39,7 +39,7 @@
 
 <h2>Rooms</h2>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Room</th>
