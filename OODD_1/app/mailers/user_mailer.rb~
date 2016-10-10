@@ -1,9 +1,9 @@
 class UserMailer < ApplicationMailer
   default from: 'notifications@library.com'
  
-  def welcome_email(email,reservation)
+  def invite_email(emails,reservation)
     @reservation = reservation
-    @url  = 'http://example.com/login'
-    mail(to: email, subject: 'Library Reservation')
+    @url  = 'http://www.google.com/'
+    mail(to: emails, subject: 'Library Reservation')
   end
 end

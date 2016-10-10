@@ -76,6 +76,8 @@ class ReservationsController < ApplicationController
     end
     respond_to do |format|
             if @reservation.save
+              temp_emails = params[:emails] #.split(',').strip(' ')
+              UserMailer.invite_email(temp_emails, @reservation).deliver
               format.html { redirect_to @reservation, notice: @reservation.end_time}
               format.json { render :show, status: :created, location: @reservation }
             else

@@ -33,7 +33,7 @@
   </div>
 
   <div class="field">
-    <%= radio_button_tag(:duration, 30) %>
+    <%= radio_button_tag(:duration, 30, true) %>
     <%= label_tag("30 mins") %> 
     <%= radio_button_tag(:duration, 60) %>
     <%= label_tag("1 Hour") %> 
@@ -41,6 +41,11 @@
     <%= label_tag("90 mins") %> 
     <%= radio_button_tag(:duration, 120) %>
     <%= label_tag("2 Hours") %>
+  </div>
+ 
+  <div class="field">
+   <%= label_tag(:emails, "Enter email of other attendees") %>
+  <%= text_field_tag(:emails) %>
   </div>
 
   <div class="actions">

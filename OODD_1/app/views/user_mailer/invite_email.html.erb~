@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Booking Confirmation</h1>
+<p>Reservation<br>
+<% room = Room.new %>
+    <% room = Room.find(@reservation.room_id)%>
+    <% member = Member.find(@reservation.member_id)%>
+Following are the reservation details:
+  <br>
+  Start Time : <%= (@reservation.start_time + 0.hours).strftime("%Y-%b-%d %I%p") %> <br>
+  End Time :  <%= (@reservation.end_time + 0.hours).strftime("%Y-%b-%d %I%p") %> <br>
+  Details <br>
+  Room Number: <%= room.room_id%><br>
+  Building:    <%= room.building%><br>
+  Booked By: <%= member.name %>
+</p>
+</body>

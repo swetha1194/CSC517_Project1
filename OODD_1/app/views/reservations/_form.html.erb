@@ -42,6 +42,11 @@
     <%= radio_button_tag(:duration, 120) %>
     <%= label_tag("2 Hours") %>
   </div>
+ 
+  <div class="field">
+   <%= label_tag(:emails, "Enter email of other attendees") %>
+  <%= text_field_tag(:emails) %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>
