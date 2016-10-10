@@ -78,6 +78,7 @@
  * Select the date and start time
  * The date portion in the start time should match the date field 
  * Choose an appropriate radio button to reserve the room for either 30, 60, 90 or 120 minutes
+ * Enter the e-mail address of other attendees. The email addresses should be separated by comma (,). 
  * Click on Create Reservation button (See reservation constraints)
 2. **View Member History, Update and Delete Reservations**
  * Click on View Members link
@@ -127,10 +128,10 @@
 * Reservations cannot be made more than one week in advance
 * No overlapping of room reservations
 
-##Testing
+## Testing
 * We have tested the rooms controller and rooms model.
 
-###Test Cases
+### Test Cases
 * Admin can create a room with room details
 * Admin cannot create a room without a room ID
 * Admin can save a room
@@ -138,13 +139,16 @@
 * Admin cannot save a room with duplicate room ID
 * Admin can delete a room
 
+## Extra Credit Features
+* While booking a room the email addresses of the attendees can be entered and notification emails will be sent. Please enter valid email addresses.
+* At a particular date and time, an admin can reserve more than one room for a member. 
+
 ## Scope for Improvement
 * UI needs to be improved 
 * While booking, there is a necessity to enter date twice
 * The user session is saved for 10 minutes after which the user automatically logs out. This is done because the user session is saved if he/she forgets to logout before closing the browser and the another user can access the the previous user's account. To prevent this we explicitly made the session last for 10 minutes. 
 
-## Further work remaining
-* Email reservation details
+
 
 
 
