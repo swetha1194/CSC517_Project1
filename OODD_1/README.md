@@ -1,6 +1,6 @@
 # Room Reservation System
 ## Getting Started
-* Use this link https://whispering-brushlands-12582.herokuapp.com to access the application
+* Use this link https://fathomless-bayou-26339.herokuapp.com to access the application
 * Super Admin Details: email: superadmin@admin.com password: admin123
 * You can either login as super admin and create other admins and room or you can sign up to be a member 
 * Remember: A user session lasts for only 10 minutes
